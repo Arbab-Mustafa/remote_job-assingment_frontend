@@ -1,15 +1,15 @@
 /**
  * Main Application Component
- * 
+ *
  * Root component that orchestrates the pipeline builder interface.
- * 
+ *
  * @module App
  */
 
-import { PipelineToolbar } from './toolbar';
-import { PipelineUI } from './ui';
-import { SubmitButton } from './submit';
-import './App.css';
+import { PipelineToolbar } from "./toolbar";
+import { PipelineUI } from "./ui";
+import { SubmitButton } from "./submit";
+import "./App.css";
 
 function App() {
   return (

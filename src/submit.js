@@ -17,7 +17,12 @@ import { useStore } from "./store";
 import "./submit.css";
 
 // API endpoint configuration
-const API_BASE_URL = process.env.API_BASE_URL;
+const rawBaseUrl =
+  process.env.REACT_APP_API_BASE_URL ||
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
+  process.env.API_BASE_URL ||
+  "";
+const API_BASE_URL = rawBaseUrl ? rawBaseUrl.replace(/\/+$/u, "") : "";
 
 /**
  * Format pipeline validation results for user display
@@ -70,6 +75,12 @@ export const SubmitButton = () => {
    * and displays the validation results to the user
    */
   const handleSubmit = async () => {
+    if (!API_BASE_URL) {
+      alert(
+        "❌ Error: Backend URL is not configured. Define REACT_APP_API_BASE_URL (or NEXT_PUBLIC_API_BASE_URL) in your .env and restart the dev server."
+      );
+      return;
+    }
     // Validate that there are nodes in the pipeline
     if (nodes.length === 0) {
       alert(
@@ -148,11 +159,29 @@ export const SubmitButton = () => {
       );
       console.log("");
 
+      const contentType = response.headers.get("content-type") || "";
+
       // Handle response
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error("❌ Backend Error Response:", errorData);
-        throw new Error(errorData.detail || "Failed to validate pipeline");
+        if (contentType.includes("application/json")) {
+          const errorData = await response.json();
+          console.error("❌ Backend Error Response:", errorData);
+          throw new Error(errorData.detail || "Failed to validate pipeline");
+        }
+
+        const errorText = await response.text();
+        console.error("❌ Backend Error Response (non-JSON):", errorText);
+        throw new Error(
+          "Unexpected backend response. Confirm the deployed API endpoint."
+        );
+      }
+
+      if (!contentType.includes("application/json")) {
+        const errorText = await response.text();
+        console.error("❌ Unexpected JSON parse error:", errorText);
+        throw new Error(
+          "Backend did not return JSON. Verify the live API URL is correct."
+        );
       }
 
       const results = await response.json();
@@ -204,7 +233,11 @@ export const SubmitButton = () => {
 
       // Show error alert
       alert(
-        `❌ Error: ${error.message}\n\nPlease ensure the backend server is running on ${API_BASE_URL}`
+        `❌ Error: ${
+          error.message
+        }\n\nPlease ensure the backend is reachable at ${
+          API_BASE_URL || "the configured API URL"
+        }.`
       );
 
       // Update status
