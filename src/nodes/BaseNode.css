@@ -1,0 +1,139 @@
+/**
+ * BaseNode Styles
+ * Professional styling for all pipeline nodes
+ */
+
+.base-node {
+    min-width: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 2px solid #5a67d8;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.base-node:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.base-node-header {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px 14px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    color: white;
+    font-size: 14px;
+}
+
+.base-node-icon {
+    font-size: 16px;
+}
+
+.base-node-title {
+    flex: 1;
+}
+
+.base-node-content {
+    padding: 12px;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Handle styling */
+.base-node .react-flow__handle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #4c51bf;
+    border: 2px solid white;
+}
+
+.base-node .react-flow__handle:hover {
+    background-color: #4338ca;
+    transform: scale(1.2);
+}
+
+.base-node .react-flow__handle-left {
+    left: -5px;
+}
+
+.base-node .react-flow__handle-right {
+    right: -5px;
+}
+
+/* Node-specific styling variants */
+.base-node.input-node {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    border-color: #10b981;
+}
+
+.base-node.output-node {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    border-color: #f59e0b;
+}
+
+.base-node.llm-node {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border-color: #06b6d4;
+}
+
+.base-node.text-node {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border-color: #f97316;
+}
+
+.base-node.data-node {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    border-color: #ec4899;
+}
+
+.base-node.process-node {
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    border-color: #8b5cf6;
+}
+
+.base-node.conditional-node {
+    background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
+    border-color: #f472b6;
+}
+
+.base-node.transform-node {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border-color: #fb923c;
+}
+
+.base-node.merge-node {
+    background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+    border-color: #e879f9;
+}
+
+.base-node.filter-node {
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+    border-color: #3b82f6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .base-node {
+        min-width: 180px;
+    }
+    
+    .base-node-header {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .base-node-content {
+        padding: 10px;
+    }
+}
+

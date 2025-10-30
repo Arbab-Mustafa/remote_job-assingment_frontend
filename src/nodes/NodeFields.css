@@ -1,0 +1,80 @@
+/**
+ * Node Field Components Styles
+ * Reusable form element styles for all nodes
+ */
+
+/* Input field styling */
+.node-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.node-field-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.node-field-input,
+.node-field-select,
+.node-field-textarea {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    background-color: #f7fafc;
+    color: #2d3748;
+}
+
+.node-field-input:focus,
+.node-field-select:focus,
+.node-field-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.node-field-input:hover,
+.node-field-select:hover,
+.node-field-textarea:hover {
+    border-color: #cbd5e0;
+}
+
+.node-field-select {
+    cursor: pointer;
+}
+
+.node-field-textarea {
+    resize: vertical;
+    min-height: 60px;
+    font-family: inherit;
+}
+
+/* Error states */
+.node-field-input.error,
+.node-field-select.error,
+.node-field-textarea.error {
+    border-color: #fc8181;
+}
+
+.node-field-error {
+    font-size: 10px;
+    color: #fc8181;
+    margin-top: 2px;
+}
+
+/* Disabled states */
+.node-field-input:disabled,
+.node-field-select:disabled,
+.node-field-textarea:disabled {
+    background-color: #edf2f7;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
