@@ -1,4 +1,4 @@
- # Frontend - VectorShift Pipeline Builder
+  # Frontend - VectorShift Pipeline Builder
 
 React-based node editor for building data processing pipelines.
 
